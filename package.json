@@ -1,0 +1,15 @@
+{
+  "name": "codenames-arabic-word-pack",
+  "version": "1.0.0",
+  "description": "Codenames custom word pack in Arabic",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",
+  "author": "Adnan Lahrech <lahadn@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
+}
