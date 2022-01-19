@@ -4,12 +4,14 @@
   "description": "Codenames custom word pack in Arabic",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "nodemon index.js"
   },
   "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",
   "author": "Adnan Lahrech <lahadn@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.17.2"
+    "ejs": "^3.1.6",
+    "express": "^4.17.2",
+    "nodemon": "^2.0.15"
   }
 }

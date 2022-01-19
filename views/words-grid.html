@@ -1,0 +1,12 @@
+<%- include('header.html') -%>
+
+<main class='container'>
+    <h1>الكلمات</h1>
+    <div class="words">
+      <% words.forEach(function(word){ %>
+        <article class='word'><%= word %></article>
+      <% }) %>
+    </div>
+</main>
+
+<%- include('footer.html') -%>
