@@ -4,7 +4,8 @@
   "description": "Codenames custom word pack in Arabic",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "watch": "nodemon index.js"
   },
   "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",
   "author": "Adnan Lahrech <lahadn@gmail.com>",
