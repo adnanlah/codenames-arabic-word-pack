@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "client": "servez client",
-    "start": "concurrently \"node server.js\" \"npx serve -p 80 client\"",
+    "start": "concurrently \"node server.js\" \"npx serve -p 433 client\"",
     "watch": "nodemon server.js"
   },
   "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",
