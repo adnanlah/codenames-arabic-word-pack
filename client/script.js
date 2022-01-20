@@ -11,7 +11,7 @@ function displayWords(words) {
 
 (async function() {
     let wordsState = []
-    const res = await fetch('http://localhost:3000/data')
+    const res = await fetch('https://codenames-api-1.herokuapp.com/data')
     const data = await res.text() 
     wordsState = data.split(/\r?\n/).filter(e => e.length > 0)
     displayWords(wordsState)
