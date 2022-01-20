@@ -1,7 +1,8 @@
 const express = require('express')
 const app = express()
 const fs = require('fs')
-const path = require('path');
+const path = require('path')
+const cors = require('cors')
 const port = process.env.PORT || 3000
 
 app.engine('.html', require('ejs').__express);
@@ -9,26 +10,25 @@ app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'html');
 
+app.use(cors({
+  origin: 'http://localhost:8080',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}))
 
 
-app.get('/', function(req, res){
+app.get('/data', (req, res) => {
   try {
-    const allFileContents = fs.readFileSync('pack.txt', 'utf-8');
-    const words = allFileContents.split(/\r?\n/).filter(e => e.length > 0)
-    console.log(words, words[words.length-1])
-    res.render('words-grid', {
-      words,
-      title: "Codenames"
-    });
+    const allFileContents = fs.readFileSync('./data/pack.txt', 'utf-8')
+    return res.send(allFileContents)
   } catch (err) {
     console.error(err)
   }
-});
+})
 
 app.get('/download', (req, res) => {
     
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
+  console.log(`App listening at http://localhost:${port}`)
 })
