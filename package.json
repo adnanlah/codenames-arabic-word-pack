@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "client": "servez client",
-    "start": "concurrently \"node server.js\" \"npx serve -p 433 client\"",
+    "start": "concurrently \"node server.js\" \"serve -p 433 client\"",
     "watch": "nodemon server.js"
   },
   "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",
@@ -19,6 +19,6 @@
     "nodemon": "^2.0.15"
   },
   "devDependencies": {
-    "servez": "^1.12.1"
+    "serve": "^13.0.2"
   }
 }
