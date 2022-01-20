@@ -6,7 +6,7 @@ const cors = require('cors')
 const port = process.env.PORT || 3000
 
 app.use(cors({
-  origin: true,
+  origin: 'https://codenames-client-2.herokuapp.com/',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }))
 
