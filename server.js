@@ -3,7 +3,7 @@ const app = express()
 const fs = require('fs')
 const path = require('path')
 const cors = require('cors')
-const port = process.env.PORT || 3000
+const port = 3000
 
 app.engine('.html', require('ejs').__express);
 app.set('views', path.join(__dirname, 'views'));
