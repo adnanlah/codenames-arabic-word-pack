@@ -4,7 +4,7 @@
   "description": "Codenames custom word pack in Arabic",
   "main": "server.js",
   "scripts": {
-    "client": "servez client",
+    "client": "serve -p 433 client",
     "start": "concurrently \"node server.js\" \"serve -p 433 client\"",
     "watch": "nodemon server.js"
   },

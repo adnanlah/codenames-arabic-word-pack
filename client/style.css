@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800&display=swap');
+
+* {
+    font-family: 'Tajawal', sans-serif !important;
+}
+
+body {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.words {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-auto-flow: row;
+    grid-gap: .5rem;
+}
+
+.word {
+    /* width: 25%; */
+    padding: 1rem;
+    /* border: 1px solid cadetblue; */
+    background-color: cornsilk;
+    border-radius: 1rem;
+    text-align: center;
+}
