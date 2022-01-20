@@ -4,7 +4,8 @@
   "description": "Codenames custom word pack in Arabic",
   "main": "server/app.js",
   "scripts": {
-    "dev": "concurrently \"node server/app.js\" \"serve -p 433 client\"",
+    "build": "cd client/ && yarn build && serve -p 433",
+    "dev": "concurrently \"yarn start\" \"yarn build\"",
     "start": "node server/app.js",
     "watch": "nodemon server/app.js"
   },

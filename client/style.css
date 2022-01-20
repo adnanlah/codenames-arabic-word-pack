@@ -33,10 +33,12 @@ header {
     -webkit-user-select: none;
     padding: 1rem;
     background-color: cornsilk;
-    border-radius: 1rem;
+    border-radius: .5rem;
     text-align: center;
+    box-sizing: border-box;
 }
 
 .word.selected {
-    border: 2px solid teal;
+    /* border: 2px solid teal; */
+    box-shadow: inset 0 0 0 2px rgba(0, 128, 128, 0.198);
 }

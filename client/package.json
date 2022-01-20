@@ -1,0 +1,22 @@
+{
+  "name": "codenames-arabic-word-pack-client",
+  "version": "1.0.0",
+  "description": "The client side",
+  "main": "script.js",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adnanlah/codenames-arabic-word-pack.git"
+  },
+  "author": "Adnan Lahrech",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adnanlah/codenames-arabic-word-pack/issues"
+  },
+  "homepage": "https://github.com/adnanlah/codenames-arabic-word-pack#readme",
+  "devDependencies": {
+    "typescript": "^4.5.5"
+  }
+}
