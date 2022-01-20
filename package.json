@@ -2,17 +2,23 @@
   "name": "codenames-arabic-word-pack",
   "version": "1.0.0",
   "description": "Codenames custom word pack in Arabic",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "watch": "nodemon index.js"
+    "client": "servez client",
+    "start": "concurrently \"node server.js\" \"npx serve -p 80 client\"",
+    "watch": "nodemon server.js"
   },
   "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",
   "author": "Adnan Lahrech <lahadn@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "concurrently": "^7.0.0",
+    "cors": "^2.8.5",
     "ejs": "^3.1.6",
     "express": "^4.17.2",
     "nodemon": "^2.0.15"
+  },
+  "devDependencies": {
+    "servez": "^1.12.1"
   }
 }
