@@ -9,7 +9,17 @@ body {
     margin: 0 auto;
 }
 
-.words {
+nav {
+    padding: 2rem 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#words {
     display: grid;
     grid-template-columns: repeat(4, auto);
     grid-auto-flow: row;
@@ -17,10 +27,16 @@ body {
 }
 
 .word {
-    /* width: 25%; */
+    cursor: pointer;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
     padding: 1rem;
-    /* border: 1px solid cadetblue; */
     background-color: cornsilk;
     border-radius: 1rem;
     text-align: center;
+}
+
+.word.selected {
+    border: 2px solid teal;
 }

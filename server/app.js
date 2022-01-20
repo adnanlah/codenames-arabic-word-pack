@@ -6,14 +6,16 @@ const cors = require('cors')
 const port = process.env.PORT || 3000
 
 app.use(cors({
-  origin: 'https://codenames-client-2.herokuapp.com',
+  origin: ['http://localhost:433', 'https://codenames-client-2.herokuapp.com'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }))
 
 app.get('/data', (req, res) => {
   try {
-    const allFileContents = fs.readFileSync('./data/pack.txt', 'utf-8')
-    return res.send(allFileContents)
+    const allFileContents = fs.readFileSync(path.join(__dirname, '../data/pack.txt'), 'utf-8')
+    return res.json({
+      words: allFileContents.split(/\r?\n/).filter(e => e.length > 0)
+    })
   } catch (err) {
     console.error(err)
   }
