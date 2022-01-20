@@ -2,11 +2,11 @@
   "name": "codenames-arabic-word-pack",
   "version": "1.0.0",
   "description": "Codenames custom word pack in Arabic",
-  "main": "server.js",
+  "main": "server/app.js",
   "scripts": {
-    "dev": "concurrently \"node server.js\" \"serve -p 433 client\"",
-    "start": "node server.js",
-    "watch": "nodemon server.js"
+    "dev": "concurrently \"node server/app.js\" \"serve -p 433 client\"",
+    "start": "node server/app.js",
+    "watch": "nodemon server/app.js"
   },
   "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",
   "author": "Adnan Lahrech <lahadn@gmail.com>",
