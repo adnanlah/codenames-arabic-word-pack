@@ -4,8 +4,8 @@
   "description": "Codenames custom word pack in Arabic",
   "main": "server.js",
   "scripts": {
-    "client": "serve -p 433 client",
-    "start": "concurrently \"node server.js\" \"serve -p 433 client\"",
+    "dev": "concurrently \"node server.js\" \"serve -p 433 client\"",
+    "start": "node server.js",
     "watch": "nodemon server.js"
   },
   "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",

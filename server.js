@@ -3,18 +3,12 @@ const app = express()
 const fs = require('fs')
 const path = require('path')
 const cors = require('cors')
-const port = 3000
-
-// app.engine('.html', require('ejs').__express);
-// app.set('views', path.join(__dirname, 'views'));
-// app.use(express.static(path.join(__dirname, 'public')));
-// app.set('view engine', 'html');
+const port = process.env.PORT || 3000
 
 app.use(cors({
-  origin: 'http://localhost:433',
+  origin: true,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }))
-
 
 app.get('/data', (req, res) => {
   try {
