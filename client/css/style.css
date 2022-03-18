@@ -6,7 +6,10 @@
 
 body {
     width: 50%;
+    min-height: 100vh;
     margin: 0 auto;
+    background: rgb(192,216,192);
+background: linear-gradient(144deg, rgba(192,216,192,1) 0%, rgba(69,111,69,1) 100%);
 }
 
 nav {
@@ -21,7 +24,7 @@ header {
 
 #words {
     display: grid;
-    grid-template-columns: repeat(4, auto);
+    grid-template-columns: repeat(5, auto);
     grid-auto-flow: row;
     grid-gap: .5rem;
 }
@@ -32,13 +35,13 @@ header {
     -moz-user-select: none;
     -webkit-user-select: none;
     padding: 1rem;
-    background-color: cornsilk;
+    background-color: #F5EEDC;
     border-radius: .5rem;
     text-align: center;
     box-sizing: border-box;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.05);
 }
 
 .word.selected {
-    /* border: 2px solid teal; */
-    box-shadow: inset 0 0 0 2px rgba(0, 128, 128, 0.198);
+    box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.5);
 }

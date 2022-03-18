@@ -1,4 +1,3 @@
-"use strict";
 var __assign = (this && this.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -55,22 +54,11 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     }
     return to.concat(ar || Array.prototype.slice.call(from));
 };
+import { debounce } from "./helpers.js";
 var containerElement = document.querySelector('#words');
 var searchInputElement = document.querySelector('input#search');
 var wordsState = [];
 var filteredWordsState = [];
-function debounce(fn, delay) {
-    var timeoutID = null;
-    return function () {
-        var _this = this;
-        var args = [];
-        for (var _i = 0; _i < arguments.length; _i++) {
-            args[_i] = arguments[_i];
-        }
-        clearTimeout(timeoutID);
-        timeoutID = window.setTimeout(function () { return fn.apply(_this, args); }, delay);
-    };
-}
 function displayWords() {
     if (containerElement) {
         containerElement.innerHTML = '';
@@ -82,12 +70,12 @@ function displayWords() {
             wordElement.innerText = word.value;
             containerElement.appendChild(wordElement);
             wordElement.addEventListener('click', function (e) {
-                wordsState = wordsState.map(function (el) { return el.value === word.value ? __assign(__assign({}, el), { selected: !word.selected }) : el; });
+                filteredWordsState = filteredWordsState.map(function (el) { return el.value === word.value ? __assign(__assign({}, el), { selected: !word.selected }) : el; });
                 displayWords();
             });
         };
-        for (var _i = 0, wordsState_1 = wordsState; _i < wordsState_1.length; _i++) {
-            var word = wordsState_1[_i];
+        for (var _i = 0, filteredWordsState_1 = filteredWordsState; _i < filteredWordsState_1.length; _i++) {
+            var word = filteredWordsState_1[_i];
             _loop_1(word);
         }
     }
@@ -97,23 +85,26 @@ function displayWords() {
         var res, data, inputHandler;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch('http://localhost:3000/data')];
+                case 0: return [4 /*yield*/, fetch('http://localhost:80/data')];
                 case 1:
                     res = _a.sent();
                     return [4 /*yield*/, res.json()];
                 case 2:
                     data = _a.sent();
                     wordsState = data.words.map(function (word, idx) { return ({ id: idx, value: word, selected: false }); });
+                    filteredWordsState = wordsState;
                     displayWords();
                     inputHandler = debounce(function (e) {
                         var searchValue = e.target.value;
-                        if (searchValue.length === 0)
+                        if (searchValue.length === 0) {
+                            filteredWordsState = wordsState;
                             return displayWords();
+                        }
                         var exactWords = wordsState.filter(function (word) { return word.value === searchValue; });
                         var closeWords = wordsState.filter(function (word) { return word.value.startsWith(searchValue) && !exactWords.find(function (e) { return e.id === word.id; }); });
                         filteredWordsState = __spreadArray(__spreadArray([], exactWords, true), closeWords, true);
                         displayWords();
-                    }, 600);
+                    }, 100);
                     if (searchInputElement)
                         searchInputElement.addEventListener('input', debounce(inputHandler, 500));
                     return [2 /*return*/];
@@ -121,3 +112,4 @@ function displayWords() {
         });
     });
 })();
+export default {};
