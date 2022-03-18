@@ -46,11 +46,11 @@ router.get("/data", (_req: Request, res: Response) => {
 
 router.post("/download", (req: Request, res: Response) => {});
 
-app.use("/.netlify/functions/server", router);
+app.use("/.netlify/functions/app", router);
 
-app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
-});
+// app.listen(port, () => {
+//   console.log(`Listening at http://localhost:${port}`);
+// });
 
 module.exports = app;
 module.exports.handler = serverless(app);
