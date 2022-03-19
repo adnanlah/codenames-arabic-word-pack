@@ -6,7 +6,6 @@ import cors from "cors";
 import serverless from "serverless-http";
 
 const app = express();
-const port = process.env.PORT || 3000;
 
 const router = express.Router();
 
@@ -31,10 +30,14 @@ router.get("/", (req: Request, res: Response) => {
 
 router.get("/data", (_req: Request, res: Response) => {
   try {
-    const allFileContents = fs.readFileSync(
-      path.join(__dirname, "../data/pack.txt"),
-      "utf-8"
-    );
+    // path of the included file will be `process.env.LAMBDA_TASK_ROOT/{name_of_function}/{included_filename}`
+    const fileName = "../data/pack.txt";
+    const resolved = process.env.LAMBDA_TASK_ROOT
+      ? path.resolve(process.env.LAMBDA_TASK_ROOT, fileName)
+      : path.resolve(__dirname, fileName);
+
+    const allFileContents = fs.readFileSync(resolved, "utf-8");
+
     return res.json({
       words: allFileContents.split(/\r?\n/).filter((e) => e.length > 0),
     });
@@ -47,10 +50,6 @@ router.get("/data", (_req: Request, res: Response) => {
 router.post("/download", (req: Request, res: Response) => {});
 
 app.use("/.netlify/functions/app", router);
-
-// app.listen(port, () => {
-//   console.log(`Listening at http://localhost:${port}`);
-// });
 
 module.exports = app;
 module.exports.handler = serverless(app);

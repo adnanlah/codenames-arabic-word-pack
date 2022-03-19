@@ -8,7 +8,7 @@
     "build": "npx tsc && netlify-lambda build dist",
     "dev-0": "concurrently \"yarn start\" \"yarn build\"",
     "dev": "ts-node src/app.ts",
-    "start": "node dist/app.js"
+    "start": "netlify-lambda serve dist"
   },
   "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",
   "author": "Adnan Lahrech <lahadn@gmail.com>",
