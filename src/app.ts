@@ -32,7 +32,7 @@ router.get("/data", (_req: Request, res: Response) => {
   try {
     // path of the included file will be `process.env.LAMBDA_TASK_ROOT/{name_of_function}/{included_filename}`
     console.log("process.env.LAMBDA_TASK_ROOT: ", process.env.LAMBDA_TASK_ROOT);
-    const fileName = "../data/pack.txt";
+    const fileName = "data/pack.txt";
     const resolved = process.env.LAMBDA_TASK_ROOT
       ? path.resolve(process.env.LAMBDA_TASK_ROOT, fileName)
       : path.resolve(__dirname, fileName);
