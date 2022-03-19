@@ -31,7 +31,9 @@ function displayWords(): void {
 }
 
 (async function () {
-  const res = await fetch("http://localhost:8888/.netlify/functions/app/data");
+  const res = await fetch(
+    "https://hardcore-wiles-2ac313.netlify.app/.netlify/functions/app/data"
+  );
   const data = await res.json();
   wordsState = data.words.map((word: Word, idx: number) => ({
     id: idx,
