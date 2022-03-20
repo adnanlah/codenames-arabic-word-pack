@@ -4,12 +4,10 @@
   "description": "Codenames custom word pack in Arabic",
   "main": "src/app.js",
   "scripts": {
-    "build-0": "cd client && yarn build",
     "build": "npx tsc && netlify-lambda build dist && cd client && yarn build",
-    "dev-0": "concurrently \"yarn start\" \"yarn build\"",
-    "dev": "ts-node src/app.ts",
-    "start": "netlify-lambda serve dist",
-    "postinstall": "cd client && yarn install"
+    "dev": "netlify dev",
+    "postinstall": "cd client && yarn install",
+    "start": "netlify-lambda serve dist"
   },
   "repository": "https://github.com/adnanlah/codenames-arabic-word-pack.git",
   "author": "Adnan Lahrech <lahadn@gmail.com>",
