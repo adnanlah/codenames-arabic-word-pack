@@ -5,7 +5,7 @@
   "main": "src/app.js",
   "scripts": {
     "build-0": "cd client && yarn build",
-    "build": "npx tsc && netlify-lambda build dist",
+    "build": "npx tsc && netlify-lambda build dist && cd client && yarn build",
     "dev-0": "concurrently \"yarn start\" \"yarn build\"",
     "dev": "ts-node src/app.ts",
     "start": "netlify-lambda serve dist",

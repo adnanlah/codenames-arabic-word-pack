@@ -55,22 +55,24 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 import { debounce } from "./helpers.js";
-var containerElement = document.querySelector('#words');
-var searchInputElement = document.querySelector('input#search');
+var containerElement = document.querySelector("#words");
+var searchInputElement = document.querySelector("input#search");
 var wordsState = [];
 var filteredWordsState = [];
 function displayWords() {
     if (containerElement) {
-        containerElement.innerHTML = '';
+        containerElement.innerHTML = "";
         var _loop_1 = function (word) {
-            var wordElement = document.createElement('article');
-            wordElement.classList.add('word');
+            var wordElement = document.createElement("article");
+            wordElement.classList.add("word");
             if (word.selected)
-                wordElement.classList.add('selected');
+                wordElement.classList.add("selected");
             wordElement.innerText = word.value;
             containerElement.appendChild(wordElement);
-            wordElement.addEventListener('click', function (e) {
-                filteredWordsState = filteredWordsState.map(function (el) { return el.value === word.value ? __assign(__assign({}, el), { selected: !word.selected }) : el; });
+            wordElement.addEventListener("click", function (e) {
+                filteredWordsState = filteredWordsState.map(function (el) {
+                    return el.value === word.value ? __assign(__assign({}, el), { selected: !word.selected }) : el;
+                });
                 displayWords();
             });
         };
@@ -85,13 +87,17 @@ function displayWords() {
         var res, data, inputHandler;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch('http://localhost:80/data')];
+                case 0: return [4 /*yield*/, fetch("https://hardcore-wiles-2ac313.netlify.app/.netlify/functions/app/data")];
                 case 1:
                     res = _a.sent();
                     return [4 /*yield*/, res.json()];
                 case 2:
                     data = _a.sent();
-                    wordsState = data.words.map(function (word, idx) { return ({ id: idx, value: word, selected: false }); });
+                    wordsState = data.words.map(function (word, idx) { return ({
+                        id: idx,
+                        value: word,
+                        selected: false,
+                    }); });
                     filteredWordsState = wordsState;
                     displayWords();
                     inputHandler = debounce(function (e) {
@@ -101,12 +107,15 @@ function displayWords() {
                             return displayWords();
                         }
                         var exactWords = wordsState.filter(function (word) { return word.value === searchValue; });
-                        var closeWords = wordsState.filter(function (word) { return word.value.startsWith(searchValue) && !exactWords.find(function (e) { return e.id === word.id; }); });
+                        var closeWords = wordsState.filter(function (word) {
+                            return word.value.startsWith(searchValue) &&
+                                !exactWords.find(function (e) { return e.id === word.id; });
+                        });
                         filteredWordsState = __spreadArray(__spreadArray([], exactWords, true), closeWords, true);
                         displayWords();
                     }, 100);
                     if (searchInputElement)
-                        searchInputElement.addEventListener('input', debounce(inputHandler, 500));
+                        searchInputElement.addEventListener("input", debounce(inputHandler, 500));
                     return [2 /*return*/];
             }
         });
