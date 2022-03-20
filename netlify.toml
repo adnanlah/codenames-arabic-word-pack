@@ -2,3 +2,5 @@
   command = "npm install && npm run build"
   functions = "functions"
   publish = "client"
+[functions]
+  included_files = ["data/**"]
